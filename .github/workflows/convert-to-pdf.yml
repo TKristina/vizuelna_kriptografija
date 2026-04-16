@@ -19,7 +19,7 @@ jobs:
 
       - name: Konvertuj u PDF
         run: |
-          pandoc "Seminarski_rad_Vizuelnakriptografija.md" -o seminarski_rad.pdf \
+          pandoc "Seminarski_rad_Vizuelna_kriptografija.md" -o seminarski_rad.pdf \
             --pdf-engine=xelatex \
             -V geometry:margin=1in
 
