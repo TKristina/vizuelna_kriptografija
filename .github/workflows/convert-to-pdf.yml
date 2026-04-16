@@ -1,0 +1,30 @@
+name: Konvertuj MD u PDF
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Preuzmi kod
+        uses: actions/checkout@v4
+
+      - name: Instaliraj Pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-xetex
+
+      - name: Konvertuj u PDF
+        run: |
+          pandoc NAZIV_TVOG_MD_FAJLA.md -o dokument.pdf \
+            --pdf-engine=xelatex \
+            -V geometry:margin=1in
+
+      - name: Uploaduj PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: dokument-pdf
+          path: dokument.pdf
