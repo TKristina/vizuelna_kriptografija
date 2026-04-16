@@ -19,12 +19,12 @@ jobs:
 
       - name: Konvertuj u PDF
         run: |
-          pandoc NAZIV_TVOG_MD_FAJLA.md -o dokument.pdf \
+          pandoc "Seminarski_rad_Vizuelnakriptografija.md" -o seminarski_rad.pdf \
             --pdf-engine=xelatex \
             -V geometry:margin=1in
 
       - name: Uploaduj PDF
         uses: actions/upload-artifact@v4
         with:
-          name: dokument-pdf
-          path: dokument.pdf
+          name: seminarski-rad-pdf
+          path: seminarski_rad.pdf
